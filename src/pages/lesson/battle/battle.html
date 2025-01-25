@@ -1,0 +1,164 @@
+<ion-header>
+  <div [hidden]="spState == !'VIDEO'"> 
+    <div [hidden]="spState == 'RIDING'">
+     <div [hidden]="spState == 'SETTING'">
+       <div [hidden]="spState == 'PAUSING'">
+       </div>
+     </div>
+    </div>
+  </div>
+<div [hidden]="spState == 'VIDEO'"> 
+ <div [hidden]="spState == !'RIDING'">
+  <div [hidden]="spState == 'SETTING'">
+    <div [hidden]="spState == 'PAUSING'">
+ <ion-navbar  hideBackButton color = "blue">
+  <ion-buttons left>
+    <button  class = "backAllow" icon-only (click)="sportState('PAUSING')" style="font-size:18px; background-color: transparent;border :none;">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </button>
+  </ion-buttons>
+   <ion-title   style=text-align:center> 競速騎行 </ion-title>
+    <ion-buttons end>
+      <button  class = "setting" icon-only (click)="sportState('SETTING')" style="font-size:18px; background-color: transparent;border :none;" >
+        <ion-icon name="settings"></ion-icon>
+     </button>
+    </ion-buttons>
+ </ion-navbar>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div [hidden]="spState == 'VIDEO'"> 
+  <div [hidden]="spState == 'RIDING'">
+   <div [hidden]="spState == !'SETTING'">
+     <div [hidden]="spState == 'PAUSING'">
+       <ion-navbar  hideBackButton color = "blue">
+         <ion-buttons left>
+           <button  class = "backAllow" icon-only (click)="sportState('RIDING')" style="font-size:18px; background-color: transparent;border :none;">
+             <ion-icon name="arrow-round-back" ></ion-icon>
+           </button>
+         </ion-buttons>
+     </ion-navbar>
+    </div>
+   </div>
+  </div> 
+ </div>
+
+</ion-header>
+
+<ion-content >
+  <div [hidden]="spState ==  !'VIDEO'"> 
+    <div [hidden]="spState == 'RIDING'">
+      <div [hidden]="spState == 'SETTING'">
+        <div [hidden]="spState == 'PAUSING'">
+          <video class = "video"   autoplay   src="assets/video/startP.mp4"></video>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div [hidden]="spState == 'VIDEO'"> 
+  <div [hidden]="spState == !'RIDING'">
+    <div [hidden]="spState == 'SETTING'">
+      <div [hidden]="spState == 'PAUSING'">
+        <br><br><br>
+        <div class = "halfOfLeft">
+          <div class = "leftUp">
+             <h1 style = "text-align: center; font-size:35px;color:#fff; ">{{RPM}}  <sub>rpm</sub> </h1>
+             <p  style = "text-align: center; font-size:15px; color : #c3c3c3;" >踏頻(StepFrequency)</p>
+          </div>
+          <div class = "leftDown">
+            <h1 style = "text-align: center; font-size:35px; color:#fff;"> {{distance}} <sub>km</sub>  </h1>
+            <p  style = "text-align: center; font-size:15px; color : #c3c3c3;">距離(Distance)</p>
+
+          </div>
+        </div>
+      <div class = "halfOfRight">
+        <div class = "rightUp">
+          <h1 style = "text-align: center; font-size:35px; color:#fff; " >{{times}}</h1>
+          <p style = "text-align: center; font-size:15px; color : #c3c3c3;">時長(Time)</p>
+        </div>
+        <div class = "rightDown">
+          <h1 style = "text-align: center; font-size:35px; color:#fff;">{{calories}} <sub >kcal</sub> </h1>
+          <p  style = "text-align: center; font-size:15px; color : #c3c3c3;">熱量(Calories)</p>
+          
+        </div>
+       </div>
+       <div id="dashBoard" style="width:300px;height: 300px"></div>
+       <ion-item class = "list" *ngFor="let item of users;let i = index">
+        <b>{{i+1}}.{{ item.name }}   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+           {{ item.distance }}</b><sub>km</sub>
+     </ion-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="spState == 'VIDEO'"> 
+  <div [hidden]="spState == 'RIDING'">
+    <div [hidden]="spState == !'SETTING'">
+      <div [hidden]="spState == 'PAUSING'">
+        <br><br><br>
+        <ion-list>
+          <h1 style="text-align:center; font-size:30px; color: #ffffff;;">音量</h1>
+           <ion-item >                           <!--[(ngModel)] = "initValue":滑動條初始值  (ionChange) = "changeRange($event)"：使可以透過ts改變音量  -->
+               <ion-range min="0" max="100" step="1" color = "dark" [(ngModel)] = "initValue" (ionChange) = "changeVolume($event)">
+                 <ion-icon small range-left name="volume-off"></ion-icon>
+                 <ion-icon range-right name="volume-up"></ion-icon>
+               </ion-range>
+             </ion-item>
+       </ion-list> 
+     </div>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="spState == 'VIDEO'"> 
+ <div [hidden]="spState == 'RIDING'">
+  <div [hidden]="spState == 'SETTING'">
+    <div [hidden]="spState == !'PAUSING'">
+      <br><br><br>
+    <ion-row>
+     <ion-col text-center>
+       <b style = "font-size:50px; color: #ffffff;">運動已暫停</b>
+    </ion-col>
+  </ion-row>
+    <br> <br><br>
+    <ion-row>
+      <ion-col text-center>
+        <button  class="pause"  ion-long-press [interval]="3000" (pressed)="pressed()" (longPressed)="stopRiding()" (pressEnded)="released()" style="background-color: transparent;border :none;">
+          <div class="current" [ngStyle]="getOverlayStyle()">
+            <ion-icon class="stop" style = "font-size:90px; color: red;" name="stop" ></ion-icon>
+          </div>
+          <round-progress  [current]="current"  [max]="max" [color]="gradient ? 'url(#gradient)' : color" [background]="background"></round-progress>
+        </button>
+      </ion-col>
+      <ion-col text-center>
+          <br>
+             <button class="play" icon-only (click)="sportState('RIDING')" style="background-color: transparent;border :none;">
+                <ion-icon style = "font-size:100px; " name="play" clear></ion-icon>
+             </button>
+        </ion-col>
+      </ion-row>
+    
+    <ion-row>
+        <ion-col text-center>   
+           <b style = "font-size:30px; color: #ffffff;">長按停止</b>
+        </ion-col>
+        <ion-col text-center>
+           <b style = "font-size:30px; color: #ffffff;">點擊繼續</b>
+        </ion-col>
+    </ion-row>
+   
+    <svg>
+      <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="5%" stop-color="green" />
+        <stop offset="95%" stop-color="gold" />
+      </linearGradient>
+      </svg>
+   </div>
+  </div>
+ </div>
+</div>
+
+</ion-content>

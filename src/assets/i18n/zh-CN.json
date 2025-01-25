@@ -1,0 +1,27 @@
+{
+    "TABS": {
+        "HOME":"健康",
+        "RIDE":"运动",
+        "HISTORY": "历史纪录",
+        "USER": "我"
+    },
+    "HOME": {
+        "SCAN":"蓝芽搜寻",
+        "BLUETOOTH PAIRING":"蓝芽配对",
+        "TITLE": "首页",
+        "SPORT":"运动",
+        "CIRCLE":"圈数",
+        "TIME":"时间",
+        "SCAN MESSAGE":"搜寻周围蓝牙设备",
+        "SCAN COMPLETED":"搜寻完成",
+        "SCAN ENABLE":"请检查您的蓝芽是否开启"
+        
+    },
+    "RIDE":{
+        "FREERIDE":"自由骑行",
+        "COURSERIDE":"课程骑行",
+        "REALSCENERIDE":"实景骑行",
+        "BATTLERIDE":"竞速骑行",
+        "STARTRIDE":"开始骑行"
+    }
+}

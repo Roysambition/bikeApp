@@ -1,0 +1,27 @@
+{ 
+    "TABS": {
+        "HOME": "健康",
+        "RIDE":"運動",
+        "HISTORY": "歷史紀錄",
+        "USER": "我"
+    },
+    "HOME": {
+        "SCAN":"藍芽搜尋",
+        "BLUETOOTH PAIRING":"藍芽配對",
+        "TITLE": "首頁",
+        "SPORT":"運動",
+        "CIRCLE":"圈數",
+        "TIME":"時間",
+        "SCAN MESSAGE":"收尋周圍藍牙設備",
+        "SCAN COMPLETED":"收尋完成",
+        "SCAN ENABLE":"請檢查您的藍芽是否開啟"
+    },
+    "RIDE":{
+        "FREERIDE":"自由騎行",
+        "COURSERIDE":"課程騎行",
+        "REALSCENERIDE":"實景騎行",
+        "BATTLERIDE":"競速騎行",
+        "STARTRIDE":"開始騎行"
+    }
+ 
+}

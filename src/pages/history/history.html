@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar color="lightDark">
+    <ion-title   style=text-align:center> 歷史紀錄 </ion-title>
+   <ion-buttons end>
+     <button ion-button icon-only (click)="otherShare()">
+       <ion-icon name="share"></ion-icon>
+     </button>
+  </ion-buttons>
+  </ion-navbar >
+ </ion-header>
+ 
+ <ion-content >
+   <ion-col  text-center >   
+   <div>
+    <button icon-only (click)="lastMonth()" style="font-size:25px; background-color: transparent;border :none;" >
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+    </button>
+    <b  style = "font-size:35px;">{{year}} - {{month}} </b>
+    <button icon-only (click)="nextMonth()"  style="font-size:25px; background-color: transparent;border :none;">
+     <ion-icon name="arrow-dropright-circle"></ion-icon>
+   </button>
+   </div>
+ </ion-col>
+   <div id = "histogram"></div>
+  
+       <ion-grid>
+       <ion-col #colorTimes (tap)="timesChange()" text-center >
+        <ion-icon style="font-size:40px; color: blue ;"  name="clock" > </ion-icon>
+         <b style = "font-size:40px; "> {{monthTimes}}</b>
+       
+         </ion-col>
+         <br><br>
+       <ion-row>
+         <ion-col #colorAveRPM (tap)="aveRPMChange()"  text-center  >
+            
+             <div style = "font-size:15px; color: gray;">
+               <ion-icon style="color: greenyellow; "  name="speed" ></ion-icon>平均踏頻
+            </div>
+          <b  style = "font-size:30px; "> {{monthAveRPM}} <sub style = "font-size:10px;" >rpm</sub> </b>
+         </ion-col>
+
+         <ion-col #colorDistance (tap)="distanceChange()" text-center >
+             <div style = "font-size:15px; color: gray;">
+                 <ion-icon  name="distance"></ion-icon> 距離
+             </div>
+          <b style = "font-size:30px;"> {{monthDistance}} <sub style = "font-size:10px;" >km</sub> </b>
+         </ion-col>
+
+         <ion-col #colorCalories (tap)="caloriesChange()" text-center >      <!--text-center:置中 -->
+          <div style = "font-size:15px; color: gray;"  >
+            <ion-icon style="color: red;"  name="flame"></ion-icon>熱量
+          </div>
+          <b  style = "font-size:30px;"> {{monthCalories}} <sub style = "font-size:10px;" >kcal</sub></b>
+          </ion-col>
+       </ion-row>
+     </ion-grid>
+
+
+     <ion-item  *ngFor="let dataList of dataLists;let indx=index" >
+      <h1> {{dataList.month}}月{{dataList.day}}日  {{dataList.name}} </h1>
+    <ion-icon name="ios-arrow-down" item-right  *ngIf="temp =='show'+indx"    (click)= "accordion(indx,'hihe')"></ion-icon>
+    <ion-icon name="ios-arrow-up" item-right *ngIf="temp !='show'+indx" (click)= "accordion(indx,'show')"></ion-icon>
+
+      <ion-list *ngIf="temp=='show'+indx" >
+
+            <ion-row>
+                <ion-col text-center>
+                  <ion-icon style="color: greenyellow; "  name="speed" ></ion-icon>
+                  <div>
+                  <b style = "font-size:15px;"> {{dataList.aveRPM}} <sub>rpm</sub> </b>
+                </div>
+                </ion-col>
+  
+                <ion-col text-center>
+                  <ion-icon  name="distance"></ion-icon> 
+                  <div>
+                  <b style = "font-size:15px;"> {{dataList.distance}} <sub>km</sub> </b>
+                </div>
+                </ion-col>
+  
+                <ion-col text-center>
+                  <ion-icon style="color: blue ;"  name="clock" > </ion-icon>
+                  <div>
+                  <b style = "font-size:15px;"> {{dataList.times}}  </b>
+                  </div>
+                </ion-col>
+
+                <ion-col text-center>
+                  <ion-icon style="color: red;"  name="flame"></ion-icon>
+                  <div>
+                  <b style = "font-size:15px;"> {{dataList.calories}} <sub>kcal</sub> </b>
+                  </div>
+                </ion-col>
+            </ion-row>
+   
+      </ion-list>
+    </ion-item>
+</ion-content > 
+ 
+
+

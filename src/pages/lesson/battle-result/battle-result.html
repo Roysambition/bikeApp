@@ -1,0 +1,42 @@
+<ion-content >
+  <p (click) ="backHome()" style="color:#488aff; font-size:20px;">完成</p>
+  <ion-fab  header right edge  >
+    <button class = 'fab' ion-fab mini  ><ion-icon name="md-share"></ion-icon></button>
+    <ion-fab-list  side="left">
+      <button ion-fab (click) = "FBShare()"><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab (click) = "IGShare()"><ion-icon name="logo-instagram"></ion-icon></button>
+      <button ion-fab (click) = "otherShare()"><ion-icon name="ios-more"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+         <hr>
+    <ion-card>
+      <ion-item>
+          <p> {{year}}年{{month}}月{{day}}日</p>
+            <b style = "font-size:30px;">{{data.distance}} <sub>km</sub> </b> 
+      </ion-item>
+    <hr>
+      <ion-row>
+        <ion-col  text-center >   <!--text-center:置中-->
+           <div style = "font-size:15px; color: gray;">
+              <ion-icon  name="speed" ></ion-icon>平均踏頻
+           </div>
+         <b style = "font-size:20px;"> {{data.aveRPM}} <sub style = "font-size:10px;" >rpm</sub> </b>
+        </ion-col>
+  
+        <ion-col  text-center >
+            <div style = "font-size:15px; color: gray;"  >
+              <ion-icon style="color:black"name="clock"></ion-icon>時長
+            </div>
+         <b style = "font-size:20px;"> {{times}} </b>
+        </ion-col>
+  
+        <ion-col  text-center >
+            <div style = "font-size:15px; color: gray;">
+                <ion-icon style="color: red;" name="flame"></ion-icon> 熱量
+            </div>
+         <b style = "font-size:20px;"> {{data.calories}} <sub style = "font-size:10px;">kcal</sub></b>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-content>
+  

@@ -1,0 +1,26 @@
+{
+    "TABS": {
+        "HOME":"Health",
+        "RIDE":"Ride",
+        "HISTORY": "History",
+        "USER": "User"
+    },
+    "HOME": {
+        "SCAN":"Scan",
+        "BLUETOOTH PAIRING":"Bluetooth pairing",
+        "TITLE": "home",
+        "SPORT":"Sport",
+        "CIRCLE":"Circle",
+        "TIME":"Time",
+        "SCAN MESSAGE":"Search for surrounding Bluetooth devices",
+        "SCAN COMPLETED":"Collection completed",
+        "SCAN ENABLE":"Please check if your Bluetooth is turned on"
+    },
+    "RIDE":{
+        "FREERIDE":"FreeRide",
+        "COURSERIDE":"Course Ride",
+        "REALSCENERIDE":"Real Scene Ride",
+        "BATTLERIDE":"Racing",
+        "STARTRIDE":"Start"
+    }
+}
